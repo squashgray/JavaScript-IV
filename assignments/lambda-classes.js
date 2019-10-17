@@ -34,6 +34,12 @@ class Student extends Person {
         this.favSubjects = studAttribute.favSubjects
     }
     listsSubjects() {
+        ;
+        Student.forEach(function(studAttribute){
+            return favSubs.push(`${studAttribute.favSubjects} `);
+           
+          });
+          console.log(favSubs);
 
     }
     PRAssignment() {
@@ -57,7 +63,23 @@ class ProjectManager extends Instructor {
 }
 
 
+const Greg = new Student({
+    name: 'Greg',
+    location: 'Pahrump',
+    age: 20,
+    previousBackground: 'trucker',
+    className: 'WEB25',
+    favSubjects: 'none'
+});
 
+const Homer = new Student({
+    name: 'Homer',
+    location: 'Springfield',
+    age: 39,
+    previousBackground: 'techican',
+    className: 'UX5',
+    favSubjects: 'donuts'
+});
 
 const Naruto = new Instructor({
     name: 'Naruto',
@@ -76,3 +98,28 @@ const Naruto = new Instructor({
     specialty: 'Front-end',
     catchPhrase: `I hate snakes`
   });
+
+  const Tim = new ProjectManager({
+    name: 'Tim',
+    location: 'New York',
+    age: 29,
+    favLanguage: 'JavaScript',
+    specialty: 'Front-end',
+    catchPhrase: 'I like turtles',
+    gradClassName: 'WEB25',
+    favInstructor: 'Indiana'
+  })
+
+  const John = new ProjectManager({
+    name: 'John',
+    location: 'Austin',
+    age: 45,
+    favLanguage: 'JavaScript',
+    specialty: 'Front-end',
+    catchPhrase: 'Where is it?',
+    gradClassName: 'WEB25',
+    favInstructor: 'Indiana'
+  })
+  
+
+  
