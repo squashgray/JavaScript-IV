@@ -18,11 +18,11 @@ class Instructor extends Person {
         this.favLanguage = insAttribute.favLanguage,
         this.catchPhrase = insAttribute.catchPhrase
     }
-    demo(){
-        return `Today we are learning about ${this.specialty}`
+    demo(subject){
+        return `Today we are learning about ${subject}`   // subject + student inserted into the methods as parameters to be used as arguments when called // 
     }
-    grade(){
-        return `${this.name} receives a perfect score on ${this.favLanguage}`
+    grade(student, subject){
+        return `${student} receives a perfect score on ${subject}`
     }
 }
 
@@ -31,35 +31,39 @@ class Student extends Person {
         super(studAttribute);
         this.previousBackground = studAttribute.previousBackground,
         this.className = studAttribute.className,
-        this.favSubjects = studAttribute.favSubjects
+        this.favSubjects = studAttribute.favSubjects                 //only students need subjects, other don't inherit from students //
     }
     listsSubjects() {
-        ;
-        Student.forEach(function(studAttribute){
-            return favSubs.push(`${studAttribute.favSubjects} `);
-           
-          });
-          console.log(favSubs);
+       return this.favSubjects.forEach(item => console.log(item));  // this.favSubject points to this objects favSubjects//
+    
+            
+    }
+    PRAssignment(subject) {
+        return `${this.name} has submitted a PR for ${subject}`
 
     }
-    PRAssignment() {
-
-    }
-    sprintChallenge() {
+    sprintChallenge(subject) {
+        return `${this.name} has begun sprint challenge on ${subject}`
 
     }
 
 } 
 
-class ProjectManager extends Instructor {
+class ProjectManager extends Instructor {  //grandchild of instructor//
     constructor(pmAttribute){
-        super(pmAttribute);
+        super(pmAttribute);   // super and extends always need for class inheritance //
         this.gradClassName = pmAttribute.gradClassName,
         this.favInstructor = pmAttribute.favInstructor
     }
-    standUp() {
+    standUp(channel) {
+        return `${this.name} announces to ${channel} @channel standy times! `  // parameter of 'channel' is put into the method//
 
     }
+    debugsCode(student, subject) {
+        return `${this.name} debugs ${student}'s code on ${subject}` 
+
+    }
+    
 }
 
 
@@ -69,16 +73,16 @@ const Greg = new Student({
     age: 20,
     previousBackground: 'trucker',
     className: 'WEB25',
-    favSubjects: 'none'
+    favSubjects: ['CSS', 'HTML', 'JS']
 });
 
 const Homer = new Student({
     name: 'Homer',
     location: 'Springfield',
     age: 39,
-    previousBackground: 'techican',
+    previousBackground: 'technician',
     className: 'UX5',
-    favSubjects: 'donuts'
+    favSubjects: ['beer', 'tv', 'donuts']
 });
 
 const Naruto = new Instructor({
@@ -118,8 +122,19 @@ const Naruto = new Instructor({
     specialty: 'Front-end',
     catchPhrase: 'Where is it?',
     gradClassName: 'WEB25',
-    favInstructor: 'Indiana'
+    favInstructor: 'Indiana',
+    
   })
   
+  console.log(Naruto.grade('Homer', 'BOWLING'));
+  console.log(Indiana.demo('poop'));
 
+  console.log(Tim.debugsCode('Greg', 'JavaScript'));
+  console.log(John.standUp('HELP'));
+
+  console.log(Naruto.speak());
+
+  console.log(Homer.sprintChallenge('failure'));
+  console.log( Homer.PRAssignment('ldfsa'));
+  Homer.listsSubjects();
   
